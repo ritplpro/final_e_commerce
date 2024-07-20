@@ -1,8 +1,6 @@
 
 
 
-import 'dart:io';
-
 import 'package:final_e_commerce/bloc/product_details/details_bloc.dart';
 import 'package:final_e_commerce/bloc/product_details/details_event.dart';
 import 'package:final_e_commerce/bloc/product_details/details_state.dart';
@@ -196,7 +194,6 @@ class _DetailsPageState extends State<DetailsPage> {
                       backgroundColor: Colors.orange),
                   onPressed: (){
                     var mid=widget.pid;
-                    print(mid);
                     context.read<DetailsBloc>().add(DetailsList(product_id:mid, quantity:quty));
                   }, child: Text('Add to Cart',style: TextStyle(color: Colors.white),)),
             ),

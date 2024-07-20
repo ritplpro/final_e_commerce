@@ -9,6 +9,11 @@ class apiUrl{
   static final  categoryUrl="${baseUrl}/ecommerce-api/categories";
   static final  add_to_cardUrl="${baseUrl}/ecommerce-api/add-to-card";
   static final  view_cartUrl="${baseUrl}/ecommerce-api/product/view-cart";
+  static final  delete_cartUrl="${baseUrl}/ecommerce-api/product/delete-cart";
+  static final  get_orderUrl="${baseUrl}/ecommerce-api/product/get-order";
+  static final  create_orderUrl="${baseUrl}/ecommerce-api/product/create-order";
+
+
 
 
 }

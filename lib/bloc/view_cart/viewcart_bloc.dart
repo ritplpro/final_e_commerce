@@ -9,6 +9,8 @@ import 'package:final_e_commerce/bloc/view_cart/viewcart_state.dart';
 class ViewcartBloc extends Bloc<ViewcartEvent, ViewcartState> {
   ApiRepositry apiRepositry;
   ViewcartBloc({required this.apiRepositry}) : super(ViewcartInitialState()) {
+
+
     on<ViewcartEvent>((event, emit) async {
       emit(ViewcartLoadingState());
 
@@ -31,5 +33,7 @@ class ViewcartBloc extends Bloc<ViewcartEvent, ViewcartState> {
 
 
     });
+
+
   }
 }
