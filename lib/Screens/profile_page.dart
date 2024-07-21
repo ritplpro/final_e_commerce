@@ -1,5 +1,6 @@
 
 
+import 'package:final_e_commerce/Screens/all_order.dart';
 import 'package:final_e_commerce/bloc/profile/profile_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -101,11 +102,25 @@ class _ProfilePageState extends State<ProfilePage> {
                     ],
                   ),
                   SizedBox(height: 20),
+
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Icon(Icons.logout),
-                      SizedBox(width: 10),
-                      TextButton(onPressed: (){}, child: Text("Logout  ",style: TextStyle(fontSize: 16,fontWeight: FontWeight.w500,color: Colors.orange),)),
+                      Row(
+                        children: [
+                          Icon(Icons.logout),
+                          SizedBox(width: 10),
+                          TextButton(onPressed: (){}, child: Text("Logout  ",style: TextStyle(fontSize: 16,fontWeight: FontWeight.w500,color: Colors.orange),)),
+                        ],
+                      ),
+
+
+                      ElevatedButton(style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder()
+                      ),
+                          onPressed: (){
+                        Navigator.push(context,MaterialPageRoute(builder: (context)=>AllOrder()));
+                          }, child: Text("Orders")),
                     ],
                   )
 
@@ -120,4 +135,6 @@ class _ProfilePageState extends State<ProfilePage> {
       }),
     );
   }
+
+
 }

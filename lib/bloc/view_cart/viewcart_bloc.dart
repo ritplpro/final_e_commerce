@@ -22,16 +22,38 @@ class ViewcartBloc extends Bloc<ViewcartEvent, ViewcartState> {
         }else{
           emit(ViewcartFailedState(errormsg: "oh oh no Data found "));
         }
-
-
-
       }catch(e){
         emit(ViewcartFailedState(errormsg: e.toString()));
       }
 
 
+    });
 
 
+
+
+    on<DeleteCartvent>((event,emit) async {
+      emit(ViewcartLoadingState());
+      try{
+        var data=await apiRepositry.deleteCard(urls: apiUrl.delete_cartUrl, deleteData: {"cart_id":event.productid});
+        if(data["status"]==true){
+          var cartdata=await apiRepositry.viewProductCart(urls: apiUrl.view_cartUrl);
+          if(cartdata !=null){
+            var alldada=ViewCartModal.fromJson(cartdata);
+            emit(ViewcartScucessState(viewCartModal: alldada));
+          }else{
+            emit(ViewcartFailedState(errormsg:"Failed to load updated cart data."));
+          }
+
+        }else{
+          emit(ViewcartFailedState(errormsg: "Failed to delete item."));
+        }
+        
+      }catch(e){
+        emit(ViewcartFailedState(errormsg: e.toString()));
+      }
+      
+      
     });
 
 

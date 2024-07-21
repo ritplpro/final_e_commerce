@@ -60,6 +60,23 @@ class ApiRepositry{
     }
   }
 
+//all order details
+  OrderDetails({required String urls}) async {
+    var uri=Uri.parse(urls);
+    var token=await AppPrefs().getToken();
+
+    try{
+      var response=await http.post(uri,headers: {
+        "Authorization":"Bearer $token",
+        'Content-Type':'application/json'
+      });
+      return returnhttpresponse(response);
+
+    }on SocketException catch(e){
+      throw FetchDataException(errormsg: "No internet${e.message.toString()}");
+    }
+  }
+
   //category
   categoryDetails({required String urls}) async {
     var uri=Uri.parse(urls);
